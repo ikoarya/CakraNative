@@ -33,12 +33,6 @@ public class MainScreen extends AppCompatActivity {
         daftarbutton.setTypeface(tipe);
         daftarbutton.setTextColor(Color.parseColor("#FFFFFF"));
 
-        entrybutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v, MotionEvent event) {
-                
-            }
 
-        });
     }
 }
