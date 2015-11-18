@@ -46,6 +46,7 @@ public class daftar extends AppCompatActivity {
     private int year, month, day;
     public TextView judul;
     public Typeface tipe;
+    public Button daftar;
 
 
     private static final int ACTION_TAKE_PHOTO_B = 1;
@@ -260,6 +261,15 @@ public class daftar extends AppCompatActivity {
         day = calendar.get(Calendar.DATE);
         tanggal = (TextView)findViewById(R.id.tgl);
         showdate(year,month,day);
+
+        daftar = (Button)findViewById(R.id.daftarnow);
+        daftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(daftar.this, home.class);
+                startActivity(intent);
+            }
+        });
 
         mImageView = (ImageView) findViewById(R.id.hasilfoto);
         mImageBitmap = null;

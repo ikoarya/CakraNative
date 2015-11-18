@@ -1,5 +1,6 @@
 package com.example.anggerikoaryasena.cakramobile;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -24,6 +25,22 @@ public class MainScreen extends AppCompatActivity {
 
         entrybutton = (Button) findViewById(R.id.masukbut);
         daftarbutton = (Button) findViewById(R.id.daftarbut);
+
+        entrybutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainScreen.this, login.class);
+                startActivity(intent1);
+            }
+        });
+
+        daftarbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainScreen.this, daftar.class);
+                startActivity(intent);
+            }
+        });
         editText();
     }
 
@@ -37,6 +54,11 @@ public class MainScreen extends AppCompatActivity {
         daftarbutton.setTextSize(24);
         daftarbutton.setTypeface(tipe);
         daftarbutton.setTextColor(Color.parseColor("#FFFFFF"));
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
 
