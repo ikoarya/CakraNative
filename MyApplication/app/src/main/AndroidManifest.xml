@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.anggerikoaryasena.cakramobile" >
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +25,10 @@
 
         </activity>
         <activity android:name=".daftar"
+            android:screenOrientation="landscape">
+
+        </activity>
+        <activity android:name=".home"
             android:screenOrientation="landscape">
 
         </activity>

@@ -12,28 +12,31 @@ import android.widget.Button;
 
 
 public class MainScreen extends AppCompatActivity {
-
+    public Button entrybutton,daftarbutton;
+    public Typeface tipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        Typeface tipe = Typeface.createFromAsset(getAssets(), "fonts/comicbookfun.ttf" );
+        tipe = Typeface.createFromAsset(getAssets(), "fonts/comicbookfun.ttf" );
 
-        Button entrybutton = (Button) findViewById(R.id.masukbut);
+        entrybutton = (Button) findViewById(R.id.masukbut);
+        daftarbutton = (Button) findViewById(R.id.daftarbut);
+        editText();
+    }
+
+    private void editText() {
         entrybutton.setText("Masuk");
         entrybutton.setTextSize(24);
         entrybutton.setTypeface(tipe);
         entrybutton.setTextColor(Color.parseColor("#FFFFFF"));
 
-        Button daftarbutton = (Button) findViewById(R.id.daftarbut);
         daftarbutton.setText("Daftar");
         daftarbutton.setTextSize(24);
         daftarbutton.setTypeface(tipe);
         daftarbutton.setTextColor(Color.parseColor("#FFFFFF"));
-
-
     }
 
 
