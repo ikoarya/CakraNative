@@ -20,7 +20,7 @@ import java.util.Calendar;
 public class daftar extends AppCompatActivity {
     private DatePicker datePicker;
     private Calendar calendar;
-    private TextView dateView;
+    private TextView tanggal;
     private int year, month, day;
 
     @Override
@@ -40,6 +40,12 @@ public class daftar extends AppCompatActivity {
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DATE);
+        tanggal = (TextView)findViewById(R.id.tgl);
+        showdate(year,month,day);
+    }
+
+    private void showdate(int year, int month, int day) {
+        tanggal.setText(new StringBuilder().append(year).append("/").append(month).append("/").append(day));
     }
 
     @SuppressWarnings("deprecation")
@@ -65,9 +71,10 @@ public class daftar extends AppCompatActivity {
             // arg1 = year
             // arg2 = month
             // arg3 = day
-            //showDate(arg1, arg2+1, arg3);
+            showdate(arg1, arg2+1, arg3);
         }
     };
+
 
    /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
