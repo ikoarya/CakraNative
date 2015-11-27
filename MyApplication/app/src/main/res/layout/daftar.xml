@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bggelap">
@@ -10,147 +9,142 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/judul"
+        android:text="haha"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        android:background="@mipmap/landas"
-        android:paddingLeft="25dp"
-        android:ems="10"
-        android:id="@+id/daftarnama"
         android:layout_below="@+id/judul"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp" />
+        android:orientation="vertical"
+        android:id="@+id/linearatas"
+        >
 
-    <TextView
-        android:layout_width="135dp"
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:inputType="textPersonName"
+            android:text="Nama"
+            android:textAlignment="center"
+            android:background="@mipmap/landas"
+            android:ems="10"
+            android:id="@+id/daftarnama"
+            android:layout_below="@+id/judul"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="center_horizontal"
+            android:text="Tanggal Lahir"
+            android:background="@mipmap/landas"
+            android:id="@+id/tgl"
+            android:layout_below="@+id/daftarnama"
+            android:layout_alignLeft="@+id/daftarnama"
+            android:layout_alignStart="@+id/daftarnama"
+            android:onClick="setDate"/>
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="center_horizontal"
+            android:text="Jenis Kelamin"
+            android:id="@+id/jenkel"
+            android:background="@mipmap/landas"
+            android:layout_below="@+id/tgl"
+            android:layout_alignLeft="@+id/tgl"
+            android:layout_alignStart="@+id/tgl"
+            android:layout_alignRight="@+id/tgl"
+            android:layout_alignEnd="@+id/tgl" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Tanggal Lahir"
-        android:background="@mipmap/landas"
-        android:paddingLeft="15dp"
-        android:paddingTop="20dp"
-        android:id="@+id/tgl"
-        android:layout_below="@+id/daftarnama"
-        android:layout_alignLeft="@+id/daftarnama"
-        android:layout_alignStart="@+id/daftarnama"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:layout_below="@+id/linearatas"
+        >
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pilih Tanggal"
-        android:id="@+id/button"
-        android:onClick="setDate"
-        android:layout_alignRight="@+id/daftarnama"
-        android:layout_alignEnd="@+id/daftarnama"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_above="@+id/jenkel"
-        android:layout_below="@+id/daftarnama" />
+        <TextView
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Foto"
+            android:id="@+id/foto"
+            android:textAlignment="center"
+            android:background="@mipmap/landas"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Jenis Kelamin"
-        android:id="@+id/jenkel"
-        android:paddingLeft="15dp"
-        android:paddingTop="20dp"
-        android:background="@mipmap/landas"
-        android:layout_below="@+id/tgl"
-        android:layout_alignLeft="@+id/tgl"
-        android:layout_alignStart="@+id/tgl"
-        android:layout_alignRight="@+id/tgl"
-        android:layout_alignEnd="@+id/tgl" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/takephoto"
+            android:background="@mipmap/foto"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/foto"
+            android:layout_toEndOf="@+id/foto"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Foto"
-        android:id="@+id/foto"
-        android:paddingLeft="15dp"
-        android:paddingTop="20dp"
-        android:background="@mipmap/landas"
-        android:layout_below="@+id/jenkel"
-        android:layout_alignLeft="@+id/jenkel"
-        android:layout_alignStart="@+id/jenkel"
-        android:layout_alignRight="@+id/jenkel"
-        android:layout_alignEnd="@+id/jenkel"/>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/pickphoto"
+            android:background="@mipmap/pickfoto"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/takephoto"
+            android:layout_toEndOf="@+id/takephoto" />
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Laki-laki"
-        android:id="@+id/radiolak"
-        android:layout_alignBaseline="@+id/jenkel"
-        android:layout_alignBottom="@+id/jenkel"
-        android:layout_toRightOf="@+id/jenkel"
-        android:layout_toEndOf="@+id/jenkel" />
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Perempuan"
-        android:id="@+id/radioperem"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_alignBaseline="@+id/radiolak"
-        android:layout_alignBottom="@+id/radiolak"
-        android:layout_toRightOf="@+id/radiolak"
-        android:layout_toEndOf="@+id/radiolak" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="@+id/linearatas">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:id="@+id/takephoto"
-        android:layout_toRightOf="@+id/foto"
-        android:layout_below="@+id/jenkel"
-        android:background="@mipmap/foto"
-        android:layout_alignBottom="@+id/foto" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/pickphoto"
-        android:background="@mipmap/pickfoto"
-        android:layout_alignTop="@+id/takephoto"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button"
-        android:layout_alignBottom="@+id/takephoto" />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/hasilfoto"
+            android:layout_above="@+id/daftarnow"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="64dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginBottom="142dp" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/daftarnow"
-        android:background="@mipmap/next"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="41dp" />
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/hasilfoto"
-        android:background="@mipmap/bingkaifoto"
-        android:layout_marginRight="31dp"
-        android:layout_marginEnd="31dp"
-        android:layout_below="@+id/daftarnama"
-        android:layout_toLeftOf="@+id/daftarnama"
-        android:layout_toStartOf="@+id/daftarnama" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/daftarnow"
+            android:background="@mipmap/next"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="41dp"
+            android:onClick="adduser"/>
+    </RelativeLayout>
 
 </RelativeLayout>
+
+
+

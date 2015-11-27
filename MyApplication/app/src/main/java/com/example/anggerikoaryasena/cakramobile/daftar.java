@@ -23,7 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,10 +44,11 @@ public class daftar extends AppCompatActivity {
     private Calendar calendar;
     private TextView tanggal;
     private int year, month, day;
-    public TextView judul;
+    public EditText daftarnama;
+    public TextView judul, fotostring;
     public Typeface tipe;
     public Button daftar;
-
+    private DBCakra mydb;
 
     private static final int ACTION_TAKE_PHOTO_B = 1;
     private static final int ACTION_TAKE_PHOTO_S = 2;
@@ -109,7 +110,7 @@ public class daftar extends AppCompatActivity {
         String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
         File albumF = getAlbumDir();
         File imageF = File.createTempFile(imageFileName, JPEG_FILE_SUFFIX, albumF);
-        ambilpath(imageFileName);
+        fotostring.setText(imageFileName);
         return imageF;
     }
 
@@ -130,7 +131,7 @@ public class daftar extends AppCompatActivity {
 
         File f = createImageFile();
         mCurrentPhotoPath = f.getAbsolutePath();
-
+       // fotostring.setText(mCurrentPhotoPath);
         return f;
     }
 
@@ -245,6 +246,24 @@ public class daftar extends AppCompatActivity {
                 }
             };
 
+
+    public void adduser(View view){
+        Log.d("TesCakra", daftarnama.getText().toString());
+        AlertDialog.Builder dialog = new AlertDialog.Builder(daftar.this);
+        dialog.setTitle("Hai");
+        dialog.setMessage("Hai masuk ke dalam adduser ");
+        dialog.setPositiveButton("tutup", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(daftar.this, home.class);
+                startActivity(intent);
+            }
+        });
+        dialog.show();
+
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -253,6 +272,7 @@ public class daftar extends AppCompatActivity {
         tipe = Typeface.createFromAsset(getAssets(), "fonts/comicbookfun.ttf" );
 
         judul = (TextView) findViewById(R.id.judul);
+        fotostring = (TextView)findViewById(R.id.foto);
         editText();
 
         calendar = Calendar.getInstance();
@@ -263,14 +283,7 @@ public class daftar extends AppCompatActivity {
         showdate(year,month,day);
 
         daftar = (Button)findViewById(R.id.daftarnow);
-        daftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(daftar.this, home.class);
-                startActivity(intent);
-            }
-        });
-
+        daftarnama = (EditText)findViewById(R.id.daftarnama);
         mImageView = (ImageView) findViewById(R.id.hasilfoto);
         mImageBitmap = null;
 
@@ -290,7 +303,7 @@ public class daftar extends AppCompatActivity {
 
     private void editText() {
         judul.setText("TULISKAN IDENTITAS");
-        judul.setTextSize(26);
+        judul.setTextSize(40);
         judul.setTypeface(tipe);
         judul.setTextColor(Color.parseColor("#FFFFFF"));
     }
@@ -302,7 +315,7 @@ public class daftar extends AppCompatActivity {
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
         showDialog(999);
-        Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
+        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT)
                 .show();
     }
 
@@ -343,12 +356,6 @@ public class daftar extends AppCompatActivity {
                 break;
             } // ACTION_TAKE_PHOTO_S
 
-            case ACTION_TAKE_VIDEO: {
-                if (resultCode == RESULT_OK) {
-                    handleCameraVideo(data);
-                }
-                break;
-            } // ACTION_TAKE_VIDEO
         } // switch
     }
 
@@ -366,15 +373,9 @@ public class daftar extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         mImageBitmap = savedInstanceState.getParcelable(BITMAP_STORAGE_KEY);
-        mVideoUri = savedInstanceState.getParcelable(VIDEO_STORAGE_KEY);
         mImageView.setImageBitmap(mImageBitmap);
         mImageView.setVisibility(
                 savedInstanceState.getBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY) ?
-                        ImageView.VISIBLE : ImageView.INVISIBLE
-        );
-        mVideoView.setVideoURI(mVideoUri);
-        mVideoView.setVisibility(
-                savedInstanceState.getBoolean(VIDEOVIEW_VISIBILITY_STORAGE_KEY) ?
                         ImageView.VISIBLE : ImageView.INVISIBLE
         );
     }

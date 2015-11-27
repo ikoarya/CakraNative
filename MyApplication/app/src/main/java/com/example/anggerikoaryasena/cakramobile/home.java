@@ -17,13 +17,16 @@ public class home extends AppCompatActivity {
     public TextView judul1, judul2, infoteks,evalteks,terapiteks,laporanteks, catatanteks;
     public Typeface tipe;
     public Button kembali;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        //Untuk menjadikan orientasi menjadi landscape dan mengubah tipe huruf
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         tipe = Typeface.createFromAsset(getAssets(), "fonts/comicbookfun.ttf" );
 
+        //deklarasi textview dan button, serta fungsi untuk membuka activity selanjutnya
         judul1 = (TextView)findViewById(R.id.halo);
         judul2 = (TextView)findViewById(R.id.nama);
         infoteks = (TextView)findViewById(R.id.infoteks);
@@ -31,7 +34,6 @@ public class home extends AppCompatActivity {
         terapiteks = (TextView)findViewById(R.id.terapiteks);
         laporanteks = (TextView)findViewById(R.id.laporanteks);
         catatanteks = (TextView)findViewById(R.id.catatanteks);
-        editText();
         kembali = (Button)findViewById(R.id.backbut);
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,9 @@ public class home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Mengubah tipe huruf
+        editText();
 
     }
 
